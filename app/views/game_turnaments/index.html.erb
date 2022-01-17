@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Game Turnaments</h1>
+
+<div class="table-responsive">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @game_turnaments.each do |game_turnament| %>
+      <tr>
+        <td><%= game_turnament.name %></td>
+        <td><%= game_turnament.status %></td>
+        <td><%= link_to 'Show', game_turnament %></td>
+        <td><%= link_to 'Edit', edit_game_turnament_path(game_turnament) %></td>
+        <td><%= link_to 'Destroy', game_turnament, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Turnament', new_game_turnament_path, class: "btn btn-primary" %>

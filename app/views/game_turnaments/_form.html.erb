@@ -1,0 +1,41 @@
+<%= form_with(model: game_turnament, local: true) do |form| %>
+  <% if game_turnament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game_turnament.errors.count, "error") %> prohibited this game_turnament from being saved:</h2>
+
+      <ul>
+        <% game_turnament.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <div class="row">
+    <div class="col-6 col-md-6">
+    <%= form.text_field :name, class:"form-control" %>
+    </div>
+    </div>
+  </div>
+
+ 
+  <div class="form-group">
+    <%= form.label "Select Teams (Select multiple)" %><br />
+    <div class="row">
+        <%= form.collection_check_boxes :team_ids, @teams, :id, :name do |b| %>
+          <div class="col-6 col-md-4">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+    </div>
+</div>
+
+  
+
+  <div class="form-group">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
